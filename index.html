@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
     <script type="importmap">
         {
         "imports": {
@@ -18,7 +19,8 @@
 
         document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
     </script>
-    <title>Video Background</title>
+    <title>Squish That Cat</title>
+    <link rel="stylesheet" href="dark.css">
     <style>
         body,
         html {
@@ -60,6 +62,36 @@
             align-items: center;
             overflow-y: auto;
         }
+
+        .content>.container {
+            padding: 25px;
+            background-color: var(--md-sys-color-background);
+            color: var(--md-sys-color-on-background);
+            display: flex;
+            flex-direction: column;
+            border-radius: 25px;
+            gap: 25px;
+            border-start-start-radius: var(--md-dialog-container-shape-start-start, var(--md-dialog-container-shape, var(--md-sys-shape-corner-extra-large, 28px)));
+            border-start-end-radius: var(--md-dialog-container-shape-start-end, var(--md-dialog-container-shape, var(--md-sys-shape-corner-extra-large, 28px)));
+            border-end-end-radius: var(--md-dialog-container-shape-end-end, var(--md-dialog-container-shape, var(--md-sys-shape-corner-extra-large, 28px)));
+            border-end-start-radius: var(--md-dialog-container-shape-end-start, var(--md-dialog-container-shape, var(--md-sys-shape-corner-extra-large, 28px)));
+            margin: 10px;
+        }
+
+        h1,
+        h2 {
+            font-weight: 100;
+            margin: 0;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .buttons>* {
+            flex-grow: 1;
+        }
     </style>
 </head>
 
@@ -70,12 +102,47 @@
         </video>
     </div>
     <div class="content">
-        <h1 class="md-typescale-display-large">Squish that cat</h1>
-        <h3 class="md-typescale-display-medium">We always squish that cat</h1>
-            <md-outlined-button>Install</md-outlined-button>
+        <div class="container">
+            <h1 class="md-typescale-display-large">Squish that cat</h1>
 
+            <h2>We always squish that cat</h2>
+
+            <div class="buttons">
+                <md-filled-button onclick="document.getElementById('install').open=true">Install</md-filled-button>
+                <md-filled-button onclick="window.open('https://youtu.be/5jKZ9KGtee0')">Play</md-filled-button>
+            </div>
+        </div>
     </div>
+    <md-dialog id="install">
+        <div slot="content">
+            <md-list style="background-color: var(--md-sys-color-surface-container-high);">
 
+                <md-list-item type="link" href="https://google.com/search?q=potato&tbm=shop" target="_blank">
+                    <div slot="headline">Windows</div>
+                    <md-icon slot="start">computer</md-icon>
+                </md-list-item>
+                <md-list-item type="link" href="https://google.com/search?q=potato&tbm=shop" target="_blank">
+                    <div slot="headline">Linux</div>
+                    <md-icon slot="start">desktop_windows</md-icon>
+                </md-list-item>
+                <md-list-item type="link" href="https://google.com/search?q=potato&tbm=shop" target="_blank">
+                    <div slot="headline">Android</div>
+                    <md-icon slot="start">smartphone</md-icon>
+                </md-list-item>
+                <md-list-item type="link" href="https://google.com/search?q=potato&tbm=shop" target="_blank">
+                    <div slot="headline">Chrome</div>
+                    <md-icon slot="start">tab</md-icon>
+                </md-list-item>
+                <md-list-item type="link" href="https://google.com/search?q=potato&tbm=shop" target="_blank">
+                    <div slot="headline">Web App (PWA)</div>
+                    <md-icon slot="start">install_desktop</md-icon>
+                </md-list-item>
+            </md-list>
+        </div>
+        <div slot="actions">
+            <md-text-button onclick="document.getElementById('install').close()">Close</md-text-button>
+        </div>
+    </md-dialog>
     <script>
         document.getElementById('background-video').play();
     </script>
